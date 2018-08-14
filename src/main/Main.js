@@ -4,17 +4,22 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "",
-      result: [],
-      error: false
+      query: "", //This var holds the value entered in the text field
+      result: [], //This array holds the response sent by the api
+      error: false //This var shows the response status of the api
     };
   }
-
+  /**
+   * This is to set the value entered in the text field to the state var
+   */
   change = e => {
     this.setState({
       query: e.target.value
     });
   };
+  /**
+   * This is to call the api on click of submit button
+   */
   submit = () => {
     this.setState({
       error: false
@@ -35,13 +40,16 @@ class Main extends React.Component {
       })
       .catch(err => console.log(err));
   };
+  /**
+   * This is to reset the application to initial state
+   */
   reset = () => {
     this.setState({
       query: "",
-      error: false
+      error: false,
+      result: []
     });
   };
-  clear = refData => {};
   render() {
     return (
       <LanguageDetection
